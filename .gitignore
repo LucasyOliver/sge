@@ -1,0 +1,27 @@
+# Django / Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.env
+.venv
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Banco de dados e Mídia
+db.sqlite3
+media/
+staticfiles/
+
+# IDEs / Editores
+.vscode/
+.idea/
+
+# Arquivos de Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
