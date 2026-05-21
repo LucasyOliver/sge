@@ -1,27 +1,44 @@
-# Django / Python
-*.pyc
+# --- Python ---
 __pycache__/
-*.pyo
-*.pyd
-.env
-.venv
-env/
+*.py[cod]
+*$py.class
+.venv/
 venv/
-pip-log.txt
-pip-delete-this-directory.txt
+env/
+dist/
+build/
+*.egg-info/
 
-# Banco de dados e Mídia
+# --- Django ---
+# Arquivos de banco de dados e mídia
 db.sqlite3
+db.sqlite3-journal
 media/
-staticfiles/
+*.log
 
-# IDEs / Editores
+# Arquivos de migrações (Opcional: mantenha se quiser versionar as migrações)
+# migrations/*.py
+# !migrations/__init__.py
+
+# --- Poetry ---
+poetry.lock
+
+# --- Pytest ---
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# --- MkDocs ---
+site/
+.cache/
+
+# --- Taskipy ---
+# Geralmente não gera arquivos, mas se criar logs de execução:
+.taskipy/
+
+# --- IDEs e Editores ---
 .vscode/
 .idea/
-
-# Arquivos de Sistema
 .DS_Store
-Thumbs.db
-
-# Logs
-*.log
+.env
