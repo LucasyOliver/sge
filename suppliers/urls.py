@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import views
+from .views import ListSupplier
 
 urlpatterns = [
-    path('suppliers/list', ..., name='suppliers_list')
+    path('suppliers/list', ListSupplier.as_view(), name='suppliers_list')
 ]

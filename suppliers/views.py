@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from django.views import generic
+from .models import Supplier
 
-# Create your views here.
+
+class ListSupplier(generic.ListView):
+    model = Supplier
+    template_name = 'suppliers.html'
+    context_object_name = 'suppliers'

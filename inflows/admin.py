@@ -5,4 +5,4 @@ from .models import Inflow
 @admin.register(Inflow)
 class InflowsAdmin(admin.ModelAdmin):
     list_display = ('supplier', 'product', 'quantity',)
-    search_fields = ('supplier',)
+    search_fields = ('supplier__name',)

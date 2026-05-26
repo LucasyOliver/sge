@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import views
+from .views import ListInflow
 
 urlpatterns = [
-    path('inflows/list', ..., name='inflows_list'),
+    path('inflows/list', ListInflow.as_view(), name='inflows_list'),
 ]

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import views
+from .views import ListOutflow
 
 urlpatterns = [
-    path('outflows/list', ..., name='outflows_list')
+    path('outflows/list', ListOutflow.as_view(), name='outflows_list')
 ]

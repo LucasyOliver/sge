@@ -4,7 +4,7 @@ from products.models import Product
 
 
 class Inflow(models.Model):
-    supllier = models.ForeignKey(Supplier, on_delete=models.PROTECT, related_name='inflows')
+    supplier = models.ForeignKey(Supplier, on_delete=models.PROTECT, related_name='inflows')
     product = models.ForeignKey(Product, on_delete=models.PROTECT, related_name='inflows')
     quantity = models.IntegerField()
     description = models.TextField(null=True, blank=True)
