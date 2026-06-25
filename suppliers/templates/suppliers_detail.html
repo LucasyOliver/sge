@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="container mt-6">
-  <h3 class="display-4">Detalhes da Marca</h3>
+  <h3 class="display-4">Detalhes do Fornecedor</h3>
 
   <div class="card">
     <div class="card-body">
@@ -12,7 +12,7 @@
       <p class="card-text">{{ object.description }}</p>
     </div>
   </div>
-  <a href="{% url 'brands_list' %}" class="btn btn-secondary mt-3">Cancelar e Voltar para lista de marcas</a>
+  <a href="{% url 'suppliers_list' %}" class="btn btn-secondary mt-3">Cancelar e Voltar para lista de fornecedores</a>
 </div>
 
 {% endblock %}

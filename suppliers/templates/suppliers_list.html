@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-SGE - Categorias
+SGE - Fornecedores
 {% endblock %}
 
 {% block content %}
 
 <div class="row mb-3">
 	<div class="col-md-6">
-		<form method="get" action="{% url 'categories_list' %}">
+		<form method="get" action="{% url 'suppliers_list' %}">
 			<div class="input-group">
 				<input type="text" class="form-control" name="name" placeholder="Nome" value="{{ request.GET.name }}">
 				<button type="submit" class="btn btn-primary">
@@ -19,8 +19,8 @@ SGE - Categorias
 	</div>
 
 	<div class="col-md-6">
-		<a href="{% url 'categories_create' %}" class=' btn btn-success float-end'>
-			<i class="bi bi-plus"></i> Nova Categoria
+		<a href="{% url 'suppliers_create' %}" class=' btn btn-success float-end'>
+			<i class="bi bi-plus"></i> Novo Fornecedor
 		</a>
 	</div>
 </div>
@@ -36,21 +36,21 @@ SGE - Categorias
 			</tr>
 		</thead>
 		<tbody>
-			{% for category in categories %}
+			{% for supplier in suppliers %}
 			<tr>
-				<td>{{ category.id }}</td>
-				<td>{{ category.name }}</td>
-				<td>{{ category.description }}</td>
+				<td>{{ supplier.id }}</td>
+				<td>{{ supplier.name }}</td>
+				<td>{{ supplier.description }}</td>
 				<td class="text-nowrap" style="width: 1%;">
-					<a href="{% url 'categories_detail' category.id %}" class="btn btn-info btn-sm">
+					<a href="{% url 'suppliers_detail' supplier.id %}" class="btn btn-info btn-sm">
 						<i class="bi bi-eye"></i>
 					</a>
 
-					<a href="{% url 'categories_update' category.id %}" class="btn btn-warning btn-sm">
+					<a href="{% url 'suppliers_update' supplier.id %}" class="btn btn-warning btn-sm">
 						<i class="bi bi-pencil"></i>
 					</a>
 
-					<a href="{% url 'categories_delete' category.id %}" class="btn btn-danger btn-sm">
+					<a href="{% url 'suppliers_delete' supplier.id %}" class="btn btn-danger btn-sm">
 						<i class="bi bi-trash"></i>
 					</a>
 				</td>
