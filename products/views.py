@@ -106,7 +106,7 @@ class ProductListView(ListView):
             queryset = queryset.filter(title__icontains = title)
 
         if serie_number:
-            queryset = queryset.filter(serie_number__icointains = serie_number)
+            queryset = queryset.filter(serie_number__icontains = serie_number)
 
         if brand:
             queryset = queryset.filter(brand__id = brand)
@@ -115,7 +115,7 @@ class ProductListView(ListView):
             queryset = queryset.filter(category__id = category)
 
         return queryset
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
