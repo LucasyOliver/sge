@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
 from .models import Inflow
 from .forms import InflowForm
 
 
-class InflowListView(ListView):
+class InflowListView(LoginRequiredMixin, ListView):
     model = Inflow
     template_name = 'inflows_list.html'
     context_object_name = 'inflows'
@@ -20,13 +21,13 @@ class InflowListView(ListView):
         return queryset
 
 
-class InflowCreateView(CreateView):
+class InflowCreateView(LoginRequiredMixin, CreateView):
     model = Inflow
     template_name = 'inflows_create.html'
     form_class = InflowForm
     success_url = reverse_lazy('inflows_list')
 
 
-class InflowDetailView(DetailView):
+class InflowDetailView(LoginRequiredMixin, DetailView):
     model = Inflow
     template_name = 'inflows_detail.html'

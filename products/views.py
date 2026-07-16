@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Product, Brand, Category
@@ -5,7 +6,7 @@ from .forms import BrandForm, CategoryForm, ProductForm
 
 
 # SESSION CLASS BRANDS
-class BrandListView(ListView):
+class BrandListView(LoginRequiredMixin, ListView):
     model = Brand
     template_name = 'brands_list.html'
     context_object_name = 'brands'
@@ -21,33 +22,33 @@ class BrandListView(ListView):
         return queryset
 
 
-class BrandCreateView(CreateView):
+class BrandCreateView(LoginRequiredMixin, CreateView):
     model = Brand
     template_name = 'brands_create.html'
     form_class = BrandForm
     success_url = reverse_lazy('brands_list')
 
 
-class BrandDetailView(DetailView):
+class BrandDetailView(LoginRequiredMixin, DetailView):
     model = Brand
     template_name = 'brands_detail.html'
 
 
-class BrandUpdateView(UpdateView):
+class BrandUpdateView(LoginRequiredMixin, UpdateView):
     model = Brand
     template_name = 'brands_update.html'
     form_class = BrandForm
     success_url = reverse_lazy('brands_list')
 
 
-class BrandDeleteView(DeleteView):
+class BrandDeleteView(LoginRequiredMixin, DeleteView):
     model = Brand
     template_name = 'brands_delete.html'
     success_url = reverse_lazy('brands_list')
 
 
 # SESSION CLASS CATEGORIES
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     template_name = 'categories_list.html'
     context_object_name = 'categories'
@@ -63,33 +64,33 @@ class CategoryListView(ListView):
         return queryset
     
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     template_name = 'categories_create.html'
     form_class = CategoryForm
     success_url = reverse_lazy('categories_list')
 
 
-class CategoryDetailView(DetailView):
+class CategoryDetailView(LoginRequiredMixin, DetailView):
     model = Category
     template_name = 'categories_detail.html'
 
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     model = Brand
     template_name = 'brands_update.html'
     form_class = CategoryForm
     success_url = reverse_lazy('categories_list')
 
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, DeleteView):
     model = Category
     template_name = 'categories_delete.html'
     success_url = reverse_lazy('categories_list')
 
 
 # SESSION CLASS PRODUCTS
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'products_list.html'
     context_object_name = 'products'
@@ -123,26 +124,26 @@ class ProductListView(ListView):
         return context
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     template_name = 'products_create.html'
     form_class = ProductForm
     success_url = reverse_lazy('products_list')
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'products_detail.html'
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     template_name = 'products_detail.html'
     form_class = ProductForm
     success_url = reverse_lazy('products_list')
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'products_delete.html'
     success_url = reverse_lazy('products_list')
