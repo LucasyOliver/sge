@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Product, Brand, Category
@@ -6,11 +6,12 @@ from .forms import BrandForm, CategoryForm, ProductForm
 
 
 # SESSION CLASS BRANDS
-class BrandListView(LoginRequiredMixin, ListView):
+class BrandListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Brand
     template_name = 'brands_list.html'
     context_object_name = 'brands'
     paginate_by = 10
+    permission_required = 'products.view_brand'
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -22,37 +23,43 @@ class BrandListView(LoginRequiredMixin, ListView):
         return queryset
 
 
-class BrandCreateView(LoginRequiredMixin, CreateView):
+class BrandCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Brand
     template_name = 'brands_create.html'
     form_class = BrandForm
     success_url = reverse_lazy('brands_list')
+    permission_required = 'products.add_brand'
+    
 
 
-class BrandDetailView(LoginRequiredMixin, DetailView):
+class BrandDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Brand
     template_name = 'brands_detail.html'
+    permission_required = 'products.view_brand'
 
 
-class BrandUpdateView(LoginRequiredMixin, UpdateView):
+class BrandUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Brand
     template_name = 'brands_update.html'
     form_class = BrandForm
     success_url = reverse_lazy('brands_list')
+    permission_required = 'products.change_brand'
 
 
-class BrandDeleteView(LoginRequiredMixin, DeleteView):
+class BrandDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Brand
     template_name = 'brands_delete.html'
     success_url = reverse_lazy('brands_list')
+    permission_required = 'products.delete_brand'
 
 
 # SESSION CLASS CATEGORIES
-class CategoryListView(LoginRequiredMixin, ListView):
+class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Category
     template_name = 'categories_list.html'
     context_object_name = 'categories'
     paginate_by = 10
+    permission_required = 'products.view_category'
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -64,37 +71,42 @@ class CategoryListView(LoginRequiredMixin, ListView):
         return queryset
     
 
-class CategoryCreateView(LoginRequiredMixin, CreateView):
+class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Category
     template_name = 'categories_create.html'
     form_class = CategoryForm
     success_url = reverse_lazy('categories_list')
+    permission_required = 'products.add_category'
 
 
-class CategoryDetailView(LoginRequiredMixin, DetailView):
+class CategoryDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Category
     template_name = 'categories_detail.html'
+    permission_required = 'products.view_category'
 
 
-class CategoryUpdateView(LoginRequiredMixin, UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Brand
     template_name = 'brands_update.html'
     form_class = CategoryForm
     success_url = reverse_lazy('categories_list')
+    permission_required = 'products.change_category'
 
 
-class CategoryDeleteView(LoginRequiredMixin, DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Category
     template_name = 'categories_delete.html'
     success_url = reverse_lazy('categories_list')
+    permission_required = 'products.delete_category'
 
 
 # SESSION CLASS PRODUCTS
-class ProductListView(LoginRequiredMixin, ListView):
+class ProductListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Product
     template_name = 'products_list.html'
     context_object_name = 'products'
     paginate_by = 10
+    permission_required = 'products.view_product'
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -124,26 +136,30 @@ class ProductListView(LoginRequiredMixin, ListView):
         return context
 
 
-class ProductCreateView(LoginRequiredMixin, CreateView):
+class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
     template_name = 'products_create.html'
     form_class = ProductForm
     success_url = reverse_lazy('products_list')
+    permission_required = 'products.add_product'
 
 
-class ProductDetailView(LoginRequiredMixin, DetailView):
+class ProductDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Product
     template_name = 'products_detail.html'
+    permission_required = 'products.view_product'
 
 
-class ProductUpdateView(LoginRequiredMixin, UpdateView):
+class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Product
     template_name = 'products_detail.html'
     form_class = ProductForm
     success_url = reverse_lazy('products_list')
+    permission_required = 'products.change_product'
 
 
-class ProductDeleteView(LoginRequiredMixin, DeleteView):
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     template_name = 'products_delete.html'
     success_url = reverse_lazy('products_list')
+    permission_required = 'products.delete_product'

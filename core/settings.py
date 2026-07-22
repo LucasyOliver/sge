@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'outflows',
     'products',
     'suppliers',
+    # --- Django Rest Framework ---
+    'rest_framework'
 ]
 
 LOGIN_URL = 'login'
