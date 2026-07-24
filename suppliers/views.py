@@ -1,8 +1,10 @@
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from .models import Supplier
 from .forms import SupplierForm
+from .serializers import SupplierSerializer
 
 
 class SupplierListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -50,3 +52,14 @@ class SupplierDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView
     template_name = 'suppliers_delete.html'
     success_url = reverse_lazy('suppliers_list')
     permission_required = 'suppliers.delete_supplier'
+
+
+class SupplierListCreateAPIView(ListCreateAPIView):
+    queryset = Supplier.objects.all()
+    serializer_class = SupplierSerializer
+
+
+class SupplierRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Supplier.objects.all()
+    serializer_class = SupplierSerializer
+

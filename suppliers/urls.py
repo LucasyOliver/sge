@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import SupplierListView, SupplierCreateView, SupplierDetailView, SupplierUpdateView, SupplierDeleteView
+from .views import (
+    SupplierListView, SupplierCreateView, SupplierDetailView, SupplierUpdateView, SupplierDeleteView,
+    SupplierListCreateAPIView, SupplierRetrieveUpdateDestroyAPIView,
+)
 
 urlpatterns = [
     path('suppliers/list', SupplierListView.as_view(), name='suppliers_list'),
@@ -7,4 +10,7 @@ urlpatterns = [
     path('suppliers/<int:pk>/detail', SupplierDetailView.as_view(), name='suppliers_detail'),
     path('suppliers/<int:pk>/update', SupplierUpdateView.as_view(), name='suppliers_update'),
     path('suppliers/<int:pk>/delete', SupplierDeleteView.as_view(), name='suppliers_delete'),
+
+    path('api/v1/suppliers', SupplierListCreateAPIView.as_view(), name='supplier-list-create-api-view'),
+    path('api/v1/suppliers/<int:pk>', SupplierRetrieveUpdateDestroyAPIView.as_view(), name='supplier-retrieve-update-destroy-api-view'),
 ]
