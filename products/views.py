@@ -7,7 +7,6 @@ from .forms import BrandForm, CategoryForm, ProductForm
 from .serializers import BrandSerializer, CategorySerializer, ProductSerializer
 
 
-
 # SESSION CLASS BRANDS
 class BrandListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Brand
@@ -21,7 +20,7 @@ class BrandListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         name = self.request.GET.get('name')
 
         if name:
-            queryset = queryset.filter(name__icontains = name)
+            queryset = queryset.filter(name__icontains=name)
 
         return queryset
 
@@ -32,7 +31,6 @@ class BrandCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = BrandForm
     success_url = reverse_lazy('brands_list')
     permission_required = 'products.add_brand'
-    
 
 
 class BrandDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
@@ -69,10 +67,10 @@ class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         name = self.request.GET.get('name')
 
         if name:
-            queryset = queryset.filter(name__icontains = name)
+            queryset = queryset.filter(name__icontains=name)
 
         return queryset
-    
+
 
 class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Category
@@ -119,16 +117,16 @@ class ProductListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         category = self.request.GET.get('category')
 
         if title:
-            queryset = queryset.filter(title__icontains = title)
+            queryset = queryset.filter(title__icontains=title)
 
         if serie_number:
-            queryset = queryset.filter(serie_number__icontains = serie_number)
+            queryset = queryset.filter(serie_number__icontains=serie_number)
 
         if brand:
-            queryset = queryset.filter(brand__id = brand)
+            queryset = queryset.filter(brand__id=brand)
 
         if category:
-            queryset = queryset.filter(category__id = category)
+            queryset = queryset.filter(category__id=category)
 
         return queryset
 
@@ -197,4 +195,3 @@ class ProductListCreateAPIView(ListCreateAPIView):
 class ProductRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-

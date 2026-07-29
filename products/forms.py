@@ -1,11 +1,12 @@
 from django import forms
 from . import models
 
+
 class BrandForm(forms.ModelForm):
 
     class Meta:
         model = models.Brand
-        fields = ['name','description',]
+        fields = ['name', 'description',]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
@@ -20,7 +21,7 @@ class CategoryForm(forms.ModelForm):
 
     class Meta:
         model = models.Category
-        fields = ['name','description',]
+        fields = ['name', 'description',]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
@@ -35,7 +36,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = models.Product
-        fields = ['title','brand','category','serie_number','cost_price','selling_price','description',]
+        fields = ['title', 'brand', 'category', 'serie_number', 'cost_price', 'selling_price', 'description',]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'brand': forms.Select(attrs={'class': 'form-control'}),

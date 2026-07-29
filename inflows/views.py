@@ -19,7 +19,7 @@ class InflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         product = self.request.GET.get('product')
 
         if product:
-            queryset = queryset.filter(product__title__icontains = product)
+            queryset = queryset.filter(product__title__icontains=product)
 
         return queryset
 

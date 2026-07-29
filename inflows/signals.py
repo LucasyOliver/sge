@@ -3,7 +3,7 @@ from django.dispatch import receiver
 from .models import Inflow
 
 
-@receiver(post_save, sender = Inflow)
+@receiver(post_save, sender=Inflow)
 def update_product_quantity(sender, instance, created, **kwargs):
     if created:
         if instance.quantity > 0:

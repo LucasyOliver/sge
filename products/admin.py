@@ -21,6 +21,6 @@ class ProductAdmin(admin.ModelAdmin):
 
     # NEW: Adds filters to the right sidebar of the admin panel
     list_filter = ('brand', 'category')
-    
+
     # NEW: Optimizes database queries to prevent the N+1 problem
     list_select_related = ('brand', 'category')

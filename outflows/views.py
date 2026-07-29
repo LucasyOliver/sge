@@ -19,7 +19,7 @@ class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         product = self.request.GET.get('product')
 
         if product:
-            queryset = queryset.filter(product__title__icontains = product)
+            queryset = queryset.filter(product__title__icontains=product)
 
         return queryset
 
@@ -41,4 +41,3 @@ class OutflowDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView)
 class OutflowListCreateAPIView(ListCreateAPIView):
     queryset = Outflow.objects.all()
     serializer_class = OutflowSerializer
-

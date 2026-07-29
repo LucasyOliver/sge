@@ -9,9 +9,10 @@ class Brand(models.Model):
 
     class Meta:
         ordering = ['id']
-    
+
     def __str__(self):
         return self.name
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -24,6 +25,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     title = models.CharField(max_length=100)

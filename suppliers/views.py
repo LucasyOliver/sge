@@ -13,17 +13,16 @@ class SupplierListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     context_object_name = 'suppliers'
     paginate_by = 10
     permission_required = 'suppliers.view_supplier'
-    
 
     def get_queryset(self):
         queryset = super().get_queryset()
         name = self.request.GET.get('name')
 
         if name:
-            queryset = queryset.filter(name__icontains = name)
+            queryset = queryset.filter(name__icontains=name)
 
         return queryset
-    
+
 
 class SupplierCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Supplier
@@ -62,4 +61,3 @@ class SupplierListCreateAPIView(ListCreateAPIView):
 class SupplierRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Supplier.objects.all()
     serializer_class = SupplierSerializer
-
